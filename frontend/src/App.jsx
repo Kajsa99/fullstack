@@ -15,6 +15,11 @@ function App() {
             });
     }, []);
 
+    onsubmit((event) => {
+        event.preventDefault();
+        alert("Form submitted!");
+    });
+
     return (
         <>
             <div>
@@ -34,6 +39,7 @@ function App() {
                 <button onClick={() => setCount((count) => count + 1)}>
                     count is {count}
                 </button>
+                <button onClick={() => onsubmit()}>Lägg till grejer</button>
                 <p>
                     Edit <code>src/App.jsx</code> and save to test HMR
                 </p>
