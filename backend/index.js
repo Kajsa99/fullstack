@@ -23,6 +23,15 @@ app.get("/api", async (_request, response) => {
     response.send(rows);
 });
 
+app.get("/animals", async (_request, response) => {
+    const { rows } = await client.query(
+        "SELECT * FROM cities WHERE name = $2",
+        ["Göteborg"]
+    );
+
+    response.send(rows);
+});
+
 app.get("/api", (_request, response) => {
     response.send({ hello: "World" });
 });
