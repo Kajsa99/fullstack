@@ -15,10 +15,13 @@ function App() {
             });
     }, []);
 
-    onsubmit((event) => {
-        event.preventDefault();
-        alert("Form submitted!");
-    });
+    useEffect(() => {
+        fetch("/animals")
+            .then((response) => response.json())
+            .then((result) => {
+                alert(`Kolla här ${result.hello}!`);
+            });
+    }, []);
 
     return (
         <>
@@ -39,7 +42,7 @@ function App() {
                 <button onClick={() => setCount((count) => count + 1)}>
                     count is {count}
                 </button>
-                <button onClick={() => onsubmit()}>Lägg till grejer</button>
+                <button>Lägg till grejer</button>
                 <p>
                     Edit <code>src/App.jsx</code> and save to test HMR
                 </p>
