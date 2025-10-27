@@ -1,20 +1,5 @@
-Inkludera en README.md-fil som innehåller webbadressen till ditt publicerade projekt. README-filen ska även (kortfattat) beskriva vad Content Delivery Networks och monitorering är, vad dessa tjänster har för fördelar samt ge exempel på tjänster som kan användas för detta. Se kursens första två moduler och sök upp information på webben på egen hand.
+Content Delivery Network används för att korta ner tiden det tar att ladda innehåll på en sida. Det den gör är att snabbare leverea frontend till användaren samtidigt som man avlastar backend och databasen. Så som jag har arbetat med det nu så är det att jag har gjort en static site via render som jag då kan hosta för att hämta data via server. Att använda static site gör att man har redundans vilket innebär att sidan kan fortsätta fungera även om servern ligger nere. Jag har användt SSL som innebär att säkra datan som skickas genom server och användare, SSL står för Secure Socket Layer.
 
-# React + Vite
+Monitorering handlar om att kunna mäta ex error, uptime och latency för att förbättra presetandan. Error rate handlar om hur månag fel som uppstår. Latency handlar om tiden det tar ifrån att en användare ber om att få data och att de får svaret. Uptime handlar om tiden som applikationen eller webbplatsen är tillgänglig för användaren. Anledningen att mäta dessa saker är för att snabbare kunna förutspå problem och återgärda dom vilket ska öka driftsäkerhet och allmänt snabbare felsökning.
 
 https://fullstack-wfzc.onrender.com/
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
--   [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
--   [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
