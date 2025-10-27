@@ -13,8 +13,15 @@ const client = new Client({
     ssl: { rejectUnauthorized: false },
 });
 
-client.connect();
-console.log("Connected to Postgres");
+(async () => {
+    try {
+        await client.connect();
+        console.log("Connected to Postgres");
+    } catch (err) {
+        console.error("Failed to connect to Postgres:", err);
+        process.exit(1);
+    }
+})();
 
 // GET alla djur
 app.get("/asc", async (_request, response) => {
@@ -27,10 +34,6 @@ app.get("/asc", async (_request, response) => {
         console.error(err);
         response.status(500).json({ error: "Database error" });
     }
-});
-
-app.get("/api", (_request, response) => {
-    response.send({ hello: "World" });
 });
 
 app.use(express.static(path.join(path.resolve(), "dist")));
