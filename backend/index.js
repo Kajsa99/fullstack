@@ -18,18 +18,9 @@ console.log("Connected to Postgres");
 
 // GET alla djur
 app.get("/asc", async (_request, response) => {
-    const { rows } = await client.query(
-        "SELECT * FROM animals ORDER BY name ASC"
-    );
-
-    response.send(rows);
-});
-
-// GET alla djur i omvänd ordning
-app.get("/desc", async (_request, response) => {
     try {
         const { rows } = await client.query(
-            "SELECT * FROM animals ORDER BY name DESC"
+            "SELECT * FROM animals ORDER BY name ASC"
         );
         response.json(rows);
     } catch (err) {
