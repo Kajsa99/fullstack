@@ -1,40 +1,49 @@
 import { useState, useEffect } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 
 function App() {
     const [count, setCount] = useState(0);
+    const [error, setError] = useState(null);
+    const [animals, setAnimals] = useState([]);
 
     useEffect(() => {
         fetch("/desc")
             .then((response) => response.json())
-            .then((result) => {
-                alert(`Hello ${result[0].name}!`);
-            });
-    }, []);
-
-    useEffect(() => {
-        fetch("/asc")
-            .then((response) => response.json())
-            .then((result) => {
-                alert(`Kolla här ${result.hello}!`);
-            });
+            .then(setAnimals)
+            .catch((e) => setError(e.message));
     }, []);
 
     return (
         <>
             <div>
-                <a href="https://vite.dev" target="_blank">
-                    <img src={viteLogo} className="logo" alt="Vite logo" />
-                </a>
-                <a href="https://react.dev" target="_blank">
-                    <img
-                        src={reactLogo}
-                        className="logo react"
-                        alt="React logo"
-                    />
-                </a>
+                <h1>Animals</h1>
+                {error && <p style={{ color: "red" }}>{error}</p>}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nam</th>
+                            <th>Race</th>
+                            <th>Ålder</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {animals.length === 0 ? (
+                            <tr>
+                                <td colSpan="4">Inga poster</td>
+                            </tr>
+                        ) : (
+                            animals.map((a) => (
+                                <tr key={a.id}>
+                                    <td>{a.id}</td>
+                                    <td>{a.name}</td>
+                                    <td>{a.race}</td>
+                                    <td>{a.age ?? ""}</td>
+                                </tr>
+                            ))
+                        )}
+                    </tbody>
+                </table>
             </div>
             <h1>Vite + React</h1>
             <div className="card">
