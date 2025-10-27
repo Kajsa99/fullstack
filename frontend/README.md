@@ -1,3 +1,5 @@
+Inkludera en README.md-fil som innehåller webbadressen till ditt publicerade projekt. README-filen ska även (kortfattat) beskriva vad Content Delivery Networks och monitorering är, vad dessa tjänster har för fördelar samt ge exempel på tjänster som kan användas för detta. Se kursens första två moduler och sök upp information på webben på egen hand.
+
 # React + Vite
 
 https://fullstack-wfzc.onrender.com/
