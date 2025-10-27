@@ -7,7 +7,7 @@ function App() {
     const [count, setCount] = useState(0);
 
     useEffect(() => {
-        fetch("/api")
+        fetch("/desc")
             .then((response) => response.json())
             .then((result) => {
                 alert(`Hello ${result[0].name}!`);
@@ -15,7 +15,7 @@ function App() {
     }, []);
 
     useEffect(() => {
-        fetch("/animals")
+        fetch("/asc")
             .then((response) => response.json())
             .then((result) => {
                 alert(`Kolla här ${result.hello}!`);
