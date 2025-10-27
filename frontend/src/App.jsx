@@ -23,8 +23,7 @@ function App() {
                         <tr>
                             <th>ID</th>
                             <th>Nam</th>
-                            <th>Race</th>
-                            <th>Ålder</th>
+                            <th>Amount</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -37,15 +36,13 @@ function App() {
                                 <tr key={a.id}>
                                     <td>{a.id}</td>
                                     <td>{a.name}</td>
-                                    <td>{a.race}</td>
-                                    <td>{a.age ?? ""}</td>
+                                    <td>{a.amount}</td>
                                 </tr>
                             ))
                         )}
                     </tbody>
                 </table>
             </div>
-            <h1>Vite + React</h1>
             <div className="card">
                 <button onClick={() => setCount((count) => count + 1)}>
                     count is {count}
