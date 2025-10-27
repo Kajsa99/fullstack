@@ -10,6 +10,7 @@ dotenv.config();
 
 const client = new Client({
     connectionString: process.env.PGURI,
+    ssl: { rejectUnauthorized: false },
 });
 
 client.connect();
@@ -24,12 +25,16 @@ app.get("/api", async (_request, response) => {
 });
 
 app.get("/animals", async (_request, response) => {
-    const { rows } = await client.query(
-        "SELECT * FROM cities WHERE name = $2",
-        ["Göteborg"]
-    );
-
-    response.send(rows);
+    try {
+        const { rows } = await client.query(
+            "SELECT * FROM cities WHERE name = $1",
+            ["Göteborg"]
+        );
+        response.json(rows);
+    } catch (err) {
+        console.error(err);
+        response.status(500).json({ error: "Database error" });
+    }
 });
 
 app.get("/api", (_request, response) => {
