@@ -14,21 +14,22 @@ const client = new Client({
 });
 
 client.connect();
+console.log("Connected to Postgres");
 
-app.get("/api", async (_request, response) => {
+// GET alla djur
+app.get("/asc", async (_request, response) => {
     const { rows } = await client.query(
-        "SELECT * FROM cities WHERE name = $1",
-        ["Stockholm"]
+        "SELECT * FROM animals ORDER BY name ASC"
     );
 
     response.send(rows);
 });
 
-app.get("/animals", async (_request, response) => {
+// GET alla djur i omvänd ordning
+app.get("/desc", async (_request, response) => {
     try {
         const { rows } = await client.query(
-            "SELECT * FROM cities WHERE name = $1",
-            ["Göteborg"]
+            "SELECT * FROM animals ORDER BY name DESC"
         );
         response.json(rows);
     } catch (err) {
