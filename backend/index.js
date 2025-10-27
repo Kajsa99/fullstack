@@ -29,10 +29,13 @@ app.get("/asc", async (_request, response) => {
         const { rows } = await client.query(
             "SELECT * FROM animals ORDER BY name ASC"
         );
+        response.type("application/json");
         response.json(rows);
     } catch (err) {
         console.error(err);
-        response.status(500).json({ error: "Database error" });
+        response
+            .status(500)
+            .json({ error: "Database error", detail: String(err) });
     }
 });
 
